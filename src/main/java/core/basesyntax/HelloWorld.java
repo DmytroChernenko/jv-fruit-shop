@@ -5,5 +5,6 @@ package core.basesyntax;
  * some test comment to test git works fine
  */
 public class HelloWorld {
-
+    // HINT: In the `public static void main(String[] args)` it is better to create instances of your classes, 
+    // and call their methods, but do not write any business logic in the `main` method!
 }
