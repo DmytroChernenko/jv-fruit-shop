@@ -1,5 +1,11 @@
 package core.basesyntax.service;
 
-public interface TransactionProcessor {
+import core.basesyntax.model.FruitTransaction;
 
+import java.util.List;
+
+public interface TransactionProcessor {
+    void process(FruitTransaction transaction);
+
+    void processAll(List<FruitTransaction> transactions);
 }
