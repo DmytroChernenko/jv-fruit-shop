@@ -26,7 +26,7 @@ public class FruitStorageImpl implements FruitStorage {
         if (storage.containsKey(fruit) && storage.get(fruit) > count) {
             storage.put(fruit, storage.get(fruit) - count);
         } else {
-            System.out.println("there is no " + fruit.getName());
+            throw new RuntimeException("there is no " + fruit.getName());
         }
     }
 
