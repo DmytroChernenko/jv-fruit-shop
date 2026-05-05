@@ -6,7 +6,9 @@ import java.util.Map;
 
 public interface FruitStorage {
     int getFruitCount(Fruit fruit);
+
     void supply(Fruit fruit, int count);
+
     void purchase(Fruit fruit, int count);
 
     void returnFruit(Fruit fruit, int count);
