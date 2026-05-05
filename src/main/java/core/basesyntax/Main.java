@@ -1,9 +1,9 @@
 package core.basesyntax;
 
-import core.basesyntax.dao.FruitTransactionDao;
-import core.basesyntax.dao.FruitTransactionDaoCsvImpl;
+import core.basesyntax.db.FruitTransactionDao;
+import core.basesyntax.db.FruitTransactionDaoCsvImpl;
 import core.basesyntax.service.TransactionProcessor;
-import core.basesyntax.service.TransactionProcessorImpl;
+import core.basesyntax.service.impl.TransactionProcessorImpl;
 
 public class Main {
     public static void main(String[] args) {
