@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class FruitStorageImpl implements FruitStorage {
     private final Map<Fruit, Integer> storage = new HashMap<>();
+
     @Override
     public int getFruitCount(Fruit fruit) {
         return storage.get(fruit);
