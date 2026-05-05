@@ -36,7 +36,9 @@ public final class FruitTransaction {
             this.code = code;
         }
 
-        public String getCode() {return  code;}
+        public String getCode() {
+            return code;
+        }
 
         public static Operation fromCode(String code) {
             for (Operation op : values()) {

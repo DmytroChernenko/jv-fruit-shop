@@ -4,7 +4,7 @@ import core.basesyntax.db.FruitTransactionDao;
 import core.basesyntax.db.FruitTransactionDaoCsvImpl;
 import core.basesyntax.service.BalanceReporter;
 import core.basesyntax.service.TransactionProcessor;
-import core.basesyntax.service.impl.CSVBalanceReporterImpl;
+import core.basesyntax.service.impl.CsvBalanceReporterImpl;
 import core.basesyntax.service.impl.TransactionProcessorImpl;
 import core.basesyntax.storage.FruitStorage;
 import core.basesyntax.storage.FruitStorageImpl;
@@ -19,7 +19,7 @@ public class Main {
         TransactionProcessor processor = new TransactionProcessorImpl(fruitStorage);
         processor.processAll(dao.getAll());
 
-        BalanceReporter reporter = new CSVBalanceReporterImpl(fruitStorage);
+        BalanceReporter reporter = new CsvBalanceReporterImpl(fruitStorage);
         reporter.createReport();
     }
 }
