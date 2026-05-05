@@ -1,14 +1,14 @@
-package core.basesyntax.service.impl;
+package core.basesyntax.strategy;
 
 import core.basesyntax.db.FruitStorage;
 import core.basesyntax.model.Fruit;
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.service.TransactionHandler;
 
-public class SupplyTransactionHandler implements TransactionHandler {
+public class BalanceOperationHandler implements OperationHandler {
+
     private FruitStorage storage;
 
-    public SupplyTransactionHandler(FruitStorage storage) {
+    public BalanceOperationHandler(FruitStorage storage) {
         this.storage = storage;
     }
 

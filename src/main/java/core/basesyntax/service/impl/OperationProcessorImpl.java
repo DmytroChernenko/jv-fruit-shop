@@ -2,29 +2,30 @@ package core.basesyntax.service.impl;
 
 import core.basesyntax.db.FruitStorage;
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.service.TransactionHandler;
-import core.basesyntax.service.TransactionProcessor;
+import core.basesyntax.strategy.*;
+import core.basesyntax.service.OperationProcessor;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TransactionProcessorImpl implements TransactionProcessor {
+public class OperationProcessorImpl implements OperationProcessor {
 
-    private Map<FruitTransaction.Operation, TransactionHandler> transactionHandlerMap;
+    private Map<FruitTransaction.Operation, OperationHandler> transactionHandlerMap;
 
     private FruitStorage fruitStorage;
 
-    public TransactionProcessorImpl(FruitStorage fruitStorage) {
+    public OperationProcessorImpl(FruitStorage fruitStorage) {
         this.transactionHandlerMap = new HashMap<>();
         this.fruitStorage = fruitStorage;
         transactionHandlerMap.put(FruitTransaction.Operation.BALANCE,
-                new BalanceTransactionHandler(fruitStorage));
+                new BalanceOperationHandler(fruitStorage));
         transactionHandlerMap.put(FruitTransaction.Operation.SUPPLY,
-                new SupplyTransactionHandler(fruitStorage));
+                new SupplyOperationHandler(fruitStorage));
         transactionHandlerMap.put(FruitTransaction.Operation.RETURN,
-                new ReturnTransactionHandler(fruitStorage));
+                new ReturnOperationHandler(fruitStorage));
         transactionHandlerMap.put(FruitTransaction.Operation.PURCHASE,
-                new PurchaseTransactionHandler(fruitStorage));
+                new PurchaseOperationHandler(fruitStorage));
     }
 
     @Override

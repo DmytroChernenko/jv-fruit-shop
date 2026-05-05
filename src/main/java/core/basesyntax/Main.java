@@ -5,9 +5,9 @@ import core.basesyntax.db.FruitStorageImpl;
 import core.basesyntax.db.FruitTransactionDao;
 import core.basesyntax.db.FruitTransactionDaoCsvImpl;
 import core.basesyntax.service.BalanceReporter;
-import core.basesyntax.service.TransactionProcessor;
+import core.basesyntax.service.OperationProcessor;
 import core.basesyntax.service.impl.CsvBalanceReporterImpl;
-import core.basesyntax.service.impl.TransactionProcessorImpl;
+import core.basesyntax.service.impl.OperationProcessorImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Main {
 
         FruitStorage fruitStorage = new FruitStorageImpl();
 
-        TransactionProcessor processor = new TransactionProcessorImpl(fruitStorage);
+        OperationProcessor processor = new OperationProcessorImpl(fruitStorage);
         processor.processAll(dao.getAll());
 
         BalanceReporter reporter = new CsvBalanceReporterImpl(fruitStorage);
