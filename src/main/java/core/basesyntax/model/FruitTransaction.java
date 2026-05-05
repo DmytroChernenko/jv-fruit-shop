@@ -8,7 +8,7 @@ public final class FruitTransaction {
     public FruitTransaction(String operation, String fruit, int quantity) {
         this.fruit = new String(fruit);
         this.quantity = quantity;
-        this.operation = Operation.valueOf(operation);
+        this.operation = Operation.fromCode(operation);
     }
 
     public Operation getOperation() {
@@ -36,6 +36,16 @@ public final class FruitTransaction {
             this.code = code;
         }
 
+        public String getCode() {return  code;}
+
+        public static Operation fromCode(String code) {
+            for (Operation op : values()) {
+                if (op.code.equals(code)) {
+                    return op;
+                }
+            }
+            throw new IllegalArgumentException("Unknown code: " + code);
+        }
     }
 
     @Override

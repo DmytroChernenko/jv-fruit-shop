@@ -14,9 +14,11 @@ public class TransactionProcessorImpl implements TransactionProcessor {
 
     private Map<FruitTransaction.Operation, TransactionHandler>  transactionHandlerMap;
 
-    public TransactionProcessorImpl() {
+    private FruitStorage fruitStorage;
+
+    public TransactionProcessorImpl(FruitStorage fruitStorage) {
         this.transactionHandlerMap = new HashMap<>();
-        FruitStorage fruitStorage = new FruitStorageImpl();
+        this.fruitStorage = fruitStorage;
         transactionHandlerMap.put(FruitTransaction.Operation.BALANCE, new BalanceTransactionHandler(fruitStorage));
         transactionHandlerMap.put(FruitTransaction.Operation.SUPPLY, new SupplyTransactionHandler(fruitStorage));
         transactionHandlerMap.put(FruitTransaction.Operation.RETURN, new ReturnTransactionHandler(fruitStorage));
