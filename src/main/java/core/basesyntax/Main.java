@@ -9,29 +9,32 @@ import core.basesyntax.service.BalanceReporter;
 import core.basesyntax.service.OperationProcessor;
 import core.basesyntax.service.impl.CsvBalanceReporterImpl;
 import core.basesyntax.service.impl.OperationProcessorImpl;
-import core.basesyntax.strategy.*;
-
+import core.basesyntax.strategy.BalanceOperationHandler;
+import core.basesyntax.strategy.OperationHandler;
+import core.basesyntax.strategy.PurchaseOperationHandler;
+import core.basesyntax.strategy.ReturnOperationHandler;
+import core.basesyntax.strategy.SupplyOperationHandler;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        FruitTransactionDao dao = new FruitTransactionDaoCsvImpl();
-
         FruitStorage fruitStorage = new FruitStorageImpl();
 
-        Map<FruitTransaction.Operation, OperationHandler> operationOperationHandlerMap = new HashMap<>();
+        Map<FruitTransaction.Operation, OperationHandler> operationHandlerMap = new HashMap<>();
 
-        operationOperationHandlerMap.put(FruitTransaction.Operation.BALANCE,
+        operationHandlerMap.put(FruitTransaction.Operation.BALANCE,
                 new BalanceOperationHandler(fruitStorage));
-        operationOperationHandlerMap.put(FruitTransaction.Operation.SUPPLY,
+        operationHandlerMap.put(FruitTransaction.Operation.SUPPLY,
                 new SupplyOperationHandler(fruitStorage));
-        operationOperationHandlerMap.put(FruitTransaction.Operation.RETURN,
+        operationHandlerMap.put(FruitTransaction.Operation.RETURN,
                 new ReturnOperationHandler(fruitStorage));
-        operationOperationHandlerMap.put(FruitTransaction.Operation.PURCHASE,
+        operationHandlerMap.put(FruitTransaction.Operation.PURCHASE,
                 new PurchaseOperationHandler(fruitStorage));
 
-        OperationProcessor processor = new OperationProcessorImpl(operationOperationHandlerMap);
+        FruitTransactionDao dao = new FruitTransactionDaoCsvImpl();
+
+        OperationProcessor processor = new OperationProcessorImpl(operationHandlerMap);
         processor.processAll(dao.getAll());
 
         BalanceReporter reporter = new CsvBalanceReporterImpl(fruitStorage);
