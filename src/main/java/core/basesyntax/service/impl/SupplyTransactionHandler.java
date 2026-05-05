@@ -1,9 +1,9 @@
 package core.basesyntax.service.impl;
 
+import core.basesyntax.db.FruitStorage;
 import core.basesyntax.model.Fruit;
 import core.basesyntax.model.FruitTransaction;
 import core.basesyntax.service.TransactionHandler;
-import core.basesyntax.storage.FruitStorage;
 
 public class SupplyTransactionHandler implements TransactionHandler {
     private FruitStorage storage;

@@ -8,7 +8,7 @@ public final class Fruit {
     }
 
     public String getName() {
-        return new String(name);
+        return name;
     }
 
     @Override

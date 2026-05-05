@@ -2,7 +2,7 @@ package core.basesyntax.service.impl;
 
 import core.basesyntax.model.Fruit;
 import core.basesyntax.service.BalanceReporter;
-import core.basesyntax.storage.FruitStorage;
+import core.basesyntax.db.FruitStorage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
