@@ -8,23 +8,7 @@ public final class FruitTransaction {
     public FruitTransaction(String operation, String fruit, int quantity) {
         this.fruit = new String(fruit);
         this.quantity = quantity;
-
-        switch (operation) {
-        case "b":
-            this.operation = Operation.BALANCE;
-            break;
-        case "s":
-            this.operation = Operation.SUPPLY;
-            break;
-        case "p":
-            this.operation = Operation.PURCHASE;
-            break;
-        case "r":
-            this.operation = Operation.RETURN;
-            break;
-        default:
-            throw new RuntimeException("incorrect operation: " + operation);
-        }
+        this.operation = Operation.valueOf(operation);
     }
 
     public Operation getOperation() {
@@ -52,9 +36,6 @@ public final class FruitTransaction {
             this.code = code;
         }
 
-        public String getCode() {
-            return code;
-        }
     }
 
     @Override
