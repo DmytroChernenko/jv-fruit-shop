@@ -2,6 +2,9 @@ package core.basesyntax.db;
 
 import core.basesyntax.model.FruitTransaction;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -16,9 +19,10 @@ public class FruitTransactionDaoCsvImpl implements FruitTransactionDao {
     {
         transactions = new ArrayList<>();
         try {
-            List<String> lines = Files.readAllLines(Path.of(FILE_NAME));
+            URI resource = getClass().getClassLoader().getResource(FILE_NAME).toURI();
+            List<String> lines = Files.readAllLines(Path.of(resource));
             lines.stream().forEach(s -> transactions.add(getFruitTransactionFromRowCsv(s)));
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             throw new RuntimeException("something bad with reading file: " + e.getMessage());
         }
     }
